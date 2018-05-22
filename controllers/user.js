@@ -28,7 +28,7 @@ function saveUser(req, res){
 		bcrypt.hash(params.password, null, null, function(err, hash){
 			user.password = hash
 
-			if(user.name != null && user.email != null ){
+			if(user.nombre != null && user.email != null ){
 				// Guardar el usuario
 				user.save((err, userStored) => {
 					if(err){
