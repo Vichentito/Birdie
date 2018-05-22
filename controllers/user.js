@@ -5,7 +5,6 @@ var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwtUser');
 
-
 function pruebas(req, res){
 	res.status(200).send({
 		message: 'Probando controlador de usuarios perron'
@@ -57,7 +56,7 @@ function getUsers(req,res){
 		if(error){
          res.status(500).send({message: 'Error en la petición'})
       	}else{
-      		res.status(200).send({users})
+      		res.status(200).send({user:users})
       	}
 	}
 }
