@@ -52,6 +52,16 @@ function saveUser(req, res){
 
 }
 
+function getUsers(req,res){
+	User.find({},function(err,users)){
+		if(error){
+         res.status(500).send({message: 'Error en la petición'})
+      	}else{
+      		res.status(200).send({users})
+      	}
+	}
+}
+
 function loginUser(req, res){
 	var params = req.body
 	var email = params.email
