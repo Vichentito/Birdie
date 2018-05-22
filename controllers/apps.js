@@ -8,10 +8,11 @@ var jwt = require('../services/jwtUser');
 
 function pruebas(req, res){
 	res.status(200).send({
-		message: 'Probando controlador de usuarios perron'
+		message: 'Probando controlador de usuarios apps'
 	});
 }
 
+/*
 function saveUser(req, res){
 	var user = new User()
 
@@ -20,15 +21,21 @@ function saveUser(req, res){
 	console.log(params)
 
 	user.nombre = params.name
+	user.userName = params.userName
 	user.email = params.email
-	user.image = 'null'
+	user.age = params.age
+	user.psswrdrecover = ''
+	user.state = true
+	user.role = 'ROLE_USER'
+	user.puntaje = '0'
+
 
 	if(params.password){
 		// Hashear contraseña
 		bcrypt.hash(params.password, null, null, function(err, hash){
 			user.password = hash
 
-			if(user.name != null && user.email != null ){
+			if(user.name != null && user.userName != null && user.email != null && user.age != null ){
 				// Guardar el usuario
 				user.save((err, userStored) => {
 					if(err){
@@ -49,7 +56,6 @@ function saveUser(req, res){
 	}else{
 		res.status(200).send({message: 'Introduce la contraseña'})
 	}
-
 }
 
 function loginUser(req, res){
@@ -85,7 +91,6 @@ function loginUser(req, res){
 	});
 }
 
-//web
 function updateUser(req, res){
 	var userId = req.params.id
 	var update = req.body
@@ -107,8 +112,6 @@ function updateUser(req, res){
 	})
 }
 
-
-//web
 function uploadImage(req, res){
 	var userId = req.params.id
 	var file_name = 'No subido...';
@@ -139,16 +142,16 @@ function uploadImage(req, res){
 		res.status(200).send({message: 'No has subido ninguna imagen...'})
 	}
 }
-
+*/
 
 function getImageFile(req, res){
-	var imageFile = req.params.imageFile;
-	var path_file = './uploads/users/'+imageFile;
+	var apkFile = req.params.apkFile;
+	var path_file = './uploads/apks/'+apkFile;
 	fs.exists(path_file, function(exists){
 		if(exists){
 			res.sendFile(path.resolve(path_file));
 		}else{
-			res.status(200).send({message: 'No existe la imagen...'});
+			res.status(200).send({message: 'No existe la apk...'});
 		}
 	});
 }
@@ -157,9 +160,5 @@ function getImageFile(req, res){
 
 module.exports = {
 	pruebas,
-	saveUser,
-	loginUser,
-	updateUser,
-	uploadImage,
 	getImageFile
 };
