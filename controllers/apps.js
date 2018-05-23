@@ -146,10 +146,11 @@ function uploadImage(req, res){
 
 function getImageFile(req, res){
 	var apkFile = req.params.apkFile;
-	var path_file = './uploads/apks/'+apkFile;
+	var path_file = './uploads/apks/';
 	fs.exists(path_file, function(exists){
 		if(exists){
-			res.sendFile(path.resolve(path_file));
+			//res.sendFile(path.resolve(path_file));
+			res.download(path_file, apkFile); 
 		}else{
 			res.status(200).send({message: 'No existe la apk...'});
 		}
