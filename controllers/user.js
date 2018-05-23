@@ -4,6 +4,7 @@ var path = require('path');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user');
 var jwt = require('../services/jwtUser');
+var mongoosePaginate = require('mongoose-pagination');
 
 function pruebas(req, res){
 	res.status(200).send({
