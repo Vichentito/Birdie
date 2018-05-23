@@ -10,6 +10,6 @@ var multipart = require('connect-multiparty');
 var md_upload = multipart({ uploadDir: './uploads/apks' });
 
 api.get('/probando-controlador-apks', Apps.pruebas);
-api.get('/get-apk-file/:apkFile', Apps.getImageFile);
+api.get('/get-apk-file/:apkFile', Apps.getApkFile);
 
 module.exports = api;

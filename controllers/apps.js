@@ -144,7 +144,7 @@ function uploadImage(req, res){
 }
 */
 
-function getImageFile(req, res){
+function getApkFile(req, res){
 	console.log("josefo se la come")
 	var apkFile = req.params.apkFile;
 	var path_file = './uploads/apks/'+apkFile;
@@ -162,5 +162,5 @@ function getImageFile(req, res){
 
 module.exports = {
 	pruebas,
-	getImageFile
+	getApkFile
 };
