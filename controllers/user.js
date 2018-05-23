@@ -52,13 +52,28 @@ function saveUser(req, res){
 }
 
 function getUsers(req,res){
-	User.find({},function(err,users)){
-		if(error){
-         res.status(500).send({message: 'Error en la petición'})
-      	}else{
-      		res.status(200).send({user:users})
-      	}
+	if(req.params.page){
+		var page = req.params.page;
+	}else{
+		var page = 1;
 	}
+
+	var itemsPerPage = 15;
+
+	User.find().sort('nombre').paginate(page, itemsPerPage, function(err, users, total){
+		if(err){
+			res.status(500).send({message: 'Error en la petición.'});
+		}else{
+			if(!users){
+				res.status(404).send({message: 'No hay artistas !!'});
+			}else{
+				return res.status(200).send({
+					total_items: total,
+					users: users
+				});
+			}
+		}
+	});
 }
 
 function loginUser(req, res){

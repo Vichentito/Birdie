@@ -10,7 +10,7 @@ var multipart = require('connect-multiparty');
 var md_upload = multipart({ uploadDir: './uploads/users' });
 
 api.get('/probando-controlador-users', User.pruebas);
-api.get('/get-all-users',User.getUsers);
+api.get('/get-all-users/:page?',User.getUsers);
 api.post('/register-users', User.saveUser);
 api.post('/login-users', User.loginUser);
 api.put('/update-users/:id', md_auth.ensureAuth, User.updateUser);
