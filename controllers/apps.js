@@ -18,8 +18,8 @@ function getApkFile(req, res){
 	var path_file = './uploads/apks/'+apkFile;
 	fs.exists(path_file, function(exists){
 		if(exists){
-			res.sendFile(path.resolve(path_file));
-			//res.download(path_file, apkFile); 
+			//res.sendFile(path.resolve(path_file));
+			res.download(path_file, apkFile); 
 		}else{
 			res.status(200).send({message: 'No existe la apk...'});
 		}
